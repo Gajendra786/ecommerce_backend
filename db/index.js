@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../config/Enum.js";
 
-const connectDB = async () => {
+export const connectDB = async () => {
   try {
     const mongodbInstance = await mongoose.connect(`${process.env.MONGO_URI}/${DB_NAME}`);
     console.log("Successfully mongodb connected!!")
@@ -11,4 +11,4 @@ const connectDB = async () => {
   }
 };
 
-export default connectDB
+// export default connectDB

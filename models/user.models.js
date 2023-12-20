@@ -47,6 +47,30 @@ const userSchema = new Schema(
       type: String,
       required: [true, "password is mandate"],
     },
+    role:{
+      type:String,
+      required:true,
+      default:"Customer"
+    },
+    mobile:{
+      type:String,
+    },
+    address:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"addresses"
+    }],
+    paymentInformation:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"payment_information"
+    }],
+    ratings:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"ratings"
+    }],
+    reviews:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"reviews"
+    }]
   },
   { timestamps: true },
 );
@@ -56,4 +80,4 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-export const User = mongoose.model("User", userSchema);
+export const User = mongoose.model("users", userSchema);
